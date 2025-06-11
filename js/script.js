@@ -1,3 +1,11 @@
+let images = [
+    {path: "images/1.jpg", title: "Image avec pleine de peinture"},
+    {path: "images/2.jpg", title: "Pont au dessus de la seine"},
+    {path: "images/3.jpg", title: "Un musé quelque part"},
+    {path: "images/4.jpg", title: "Vue panoramique sur des building"},
+    {path: "images/5.jpg", title: "Dubai by night"},
+    {path: "images/6.jpg", title: "La tour Effeil"}
+];
 
 let menu = document.getElementById("toolbar-toggle");
 let toolbar =  document.getElementsByClassName("toolbar")[0];
@@ -14,15 +22,8 @@ sliderToggle.addEventListener("click", play);
 sliderNext.addEventListener("click", next);
 sliderRandom.addEventListener("click", random);
 
-let images = [
-    {path: "images/1.jpg", title: "Image avec pleine de peinture"},
-    {path: "images/2.jpg", title: "Pont au dessus de la seine"},
-    {path: "images/3.jpg", title: "Un musé quelque part"},
-    {path: "images/4.jpg", title: "Vue panoramique sur des building"},
-    {path: "images/5.jpg", title: "Dubai by night"},
-    {path: "images/6.jpg", title: "La tour Effeil"}
-];
-
+// position image dans le tableau 'images'
+let index = 0;
 
 
 menu.addEventListener("click", () => {
@@ -38,8 +39,14 @@ function play(){
 }
 
 function next(){
-    img.src = images[3].path;
-    title.innerHTML = images[3].title;
+   // index = (index + 1) % images.length;
+   index++; // index = index + 1   // index += 1
+   if( index >= images.length ){
+    index = 0;
+   }
+
+    img.src = images[index].path;
+    title.innerHTML = images[index].title;
 }
 
 function random(){
