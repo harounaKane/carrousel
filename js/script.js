@@ -14,6 +14,7 @@ let sliderPrevious = document.getElementById("slider-previous");
 let sliderToggle = document.getElementById("slider-toggle");
 let sliderNext = document.getElementById("slider-next");
 let sliderRandom= document.getElementById("slider-random");
+let icon = document.querySelector("#slider-toggle i");
 
 let img = document.querySelector("#slider img");
 let title = document.querySelector("#slider figcaption");
@@ -25,7 +26,8 @@ sliderRandom.addEventListener("click", random);
 
 // position image dans le tableau 'images'
 let index = 0;
-let timer = null;
+let timerPlay = null;
+let timerRandom = null;
 
 refresh();
 
@@ -44,35 +46,55 @@ function previous(){
 }
 
 function play(){
-    
-    sliderToggle.firstChild.classList.toggle("fa-play")
-    sliderToggle.firstChild.classList.toggle("fa-pause");
 
-    if( timer == null ){
-        timer = setInterval(next, 2000);
+    if( timerRandom !== null ){
+        icon.classList.add("fa-play");
+        icon.classList.remove("fa-pause");
+        clearInterval(timerRandom);
+        timerRandom = null;
+
+        return;
+    }
+
+
+    icon.classList.toggle("fa-play");
+    icon.classList.toggle("fa-pause");
+
+    if( timerPlay == null ){        
+        timerPlay = setInterval(next, 1000);
     }else{
-        clearInterval(timer);
-        timer = null;
+        clearInterval(timerPlay);
+        timerPlay = null;
+    }
+}
+
+function random(){
+    
+    if( timerPlay !== null ){
+        clearInterval(timerPlay);
+        timerPlay = null;
+    }else{
+        icon.classList.remove("fa-play");
+        icon.classList.add("fa-pause");
+    }
+    
+    if( timerRandom == null ){
+        timerRandom = setInterval( () => {
+            
+            const CURRENT_POS = index;
+            
+            do{
+                index = Math.floor( Math.random() * images.length );
+            }while( CURRENT_POS == index ); 
+            
+            refresh();
+        }, 1000);
     }
 }
 
 function next(){
     index = (index + 1) % images.length;
     refresh();
-}
-
-function random(){
-
-    setInterval( () => {
-
-        const CURRENT_POS = index;
-
-        do{
-            index = Math.floor( Math.random() * images.length );
-        }while( CURRENT_POS == index ); 
-
-        refresh()
-    }, 1000);
 }
 
 function barreOutil(){
