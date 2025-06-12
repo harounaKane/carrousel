@@ -62,17 +62,17 @@ function next(){
 }
 
 function random(){
-    const CURRENT_POS = index;
 
     setInterval( () => {
+
+        const CURRENT_POS = index;
+
         do{
             index = Math.floor( Math.random() * images.length );
         }while( CURRENT_POS == index ); 
 
         refresh()
     }, 1000);
-
-    console.log(CURRENT_POS, index);
 }
 
 function barreOutil(){
