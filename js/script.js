@@ -105,3 +105,21 @@ function refresh(){
     img.src = images[index].path;
     title.innerHTML = images[index].title;
 }
+
+
+document.addEventListener("keyup", (e) => {
+    switch( e.key ){
+        case "ArrowLeft":
+            previous();
+            break;
+
+        case "ArrowRight":
+            next();
+            break;
+
+        case " ":
+            play();
+            break;
+    }
+    
+});
