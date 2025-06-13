@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <h1>Formulaire de sondage sportif</h1>
+
+        <form action="" novalidate>
+            <label for="">Nom : </label>
+            <input type="text" placeholder="Nom" id="nom" name="nom">
+            <div class="erreur" id="erreur-nom"></div>
+
+            <label for="">Email : </label>
+            <input type="email" placeholder="E-mail" id="email" name="email">
+            <div class="erreur" id="erreur-email"></div>
+
+            <label for="">
+                Niveau sportif : 
+                <select name="name" id="level">
+                    <option value="">--- Selectionnez ---</option>
+                    <option value="Débutant">Débutant</option>
+                    <option value="Intermédiaire">Intermédiaire</option>
+                    <option value="Avancé">Avancé</option>
+                </select>
+            </label>
+            <fieldset>
+                <legend>Vos Sports préférés</legend>
+                <div>
+                    <input type="checkbox" id="muscu" name="sports" value="Musculation">
+                    <label for="muscu">Musculation</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="yoga" name="sports" value="Yoga">
+                    <label for="yoga">Yoga</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="course" name="sports" value="Coures">
+                    <label for="course">Coures</label>
+                </div>
+                <input type="checkbox" id="natation" name="sports" value="Natation">
+                <label for="natation">Natation</label>
+                <div class="erreur" id="erreur-sport"></div>
+            </fieldset>
+            <label for="">Commentaire : </label>
+            <textarea name="" id="comment" placeholder="Votre commentaire" rows="4"></textarea>
+            <input type="submit">
+
+            <div id="progression"> <div class="progression"></div> </div>
+        
+        </form>
+
+        <div id="recap" class="">
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
